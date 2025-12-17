@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <!-- TODO: Replace with your institution or lab name -->
+  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
+  <!-- TODO: Same as paper title above -->
+  <meta property="og:title" content="PAPER_TITLE">
+  <!-- TODO: Same as description above -->
+  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
+  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
+  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="KEYWORD1">
+  <meta property="article:tag" content="KEYWORD2">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <!-- TODO: Same as paper title above -->
+  <meta name="twitter:title" content="PAPER_TITLE">
+  <!-- TODO: Same as description above -->
+  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Same as social preview image above -->
+  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="PAPER_TITLE">
+  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
+  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
+  <meta name="citation_publication_date" content="2024">
+  <meta name="citation_conference_title" content="CONFERENCE_NAME">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <!-- TODO: Replace with your paper title and authors -->
+  <title>Visual Geometrey Diffusion Policy</title>
+  
+  <!-- Favicon and App Icons -->
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "PAPER_TITLE",
+    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "FIRST_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "SECOND_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      }
+    ],
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "INSTITUTION_NAME"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
+    "abstract": "FULL_ABSTRACT_TEXT_HERE",
+    "citation": "BIBTEX_CITATION_HERE",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "INSTITUTION_OR_LAB_NAME",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- TODO: Replace with your paper title -->
+            <h1 class="title is-1 publication-title"><strong style="font-size: 1.4em;"><span style="color: #6A86E5;">V</span><span style="color: #BD5745;">G</span><span style="color: #E1BE58;">D</span><span style="color: #6FA263;">P</span></strong><br>Visual-Geometry Diffusion Policy</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- TODO: Replace with your paper authors and their personal links -->
+              <span class="author-block">
+                <a href="https://github.com/WinterMelooooo" target="_blank">Yikai Tang</a><sup>*1</sup>,</span>
+              <span class="author-block">
+                <a href="https://geng-haoran.github.io/" target="_blank">Haoran Geng</a><sup>*†1</sup>,</span>
+              <span class="author-block">
+                <a href="https://github.com/szang18" target="_blank">Sheng Zang</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://people.eecs.berkeley.edu/~pabbeel/" target="_blank">Pieter Abbeel</a><sup>†1</sup>,</span>
+              <span class="author-block">
+                <a href="https://people.eecs.berkeley.edu/~malik/" target="_blank">Jitendra Malik</a><sup>†1</sup></span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <!-- TODO: Replace with your institution and conference/journal info -->
+                    <span class="author-block"><sup>1</sup> University of California, Berkeley<br></span>
+                    <span class="author-block"><sup>2</sup> Nanyang Technological University<br></span>
+                    <!-- TODO: Remove this line if no equal contribution -->
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution, <sup>†</sup>Indicates Equal Advising</small></span>
+                  </div>
+          
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- TODO: Update with your arXiv paper ID -->
+                         <span class="link-block">
+                          <a href="https://arxiv.org/abs/2511.22445" target="_blank"
+                          class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                              <i class="ai ai-arxiv"></i>
+                            </span>
+                            <span>arxiv</span>
+                          </a>
+                        </span>
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2511.22445" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+
+                    <!-- TODO: Replace with your GitHub repository URL -->
+                    <span class="link-block">
+                      <a href="https://github.com/WinterMelooooo/Visual-Geometry-Diffusion-Policy" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+
+                    <!-- TODO: Add your supplementary material PDF or remove this section -->
+                    <span class="link-block">
+                      <a href="https://drive.google.com/drive/folders/1oe_k7lijSQzIMv5udIICozZBtr8uE5Nd?usp=sharing" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-database"></i>
+                      </span>
+                      <span>Data</span>
+                    </a>
+                  </span>
+           
+
+                <!-- TODO: Update with your arXiv paper ID -->
+                <span class="link-block">
+                  <a href="wintermelooooo@gmail.com" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <span>Contact</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container" style="max-width: 1400px;">
+    <div class="hero-body">
+      <video class="teaser-video" autoplay controls muted loop preload="metadata">
+        <source src="static/videos/Demo_Video.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<style>
+  .teaser-video {
+    width: 65%;
+    max-width: 1400px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+</style>
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <!-- TODO: Replace with your paper abstract -->
+          <p>
+            Imitation learning has emerged as a crucial approach
+            for acquiring visuomotor skills from demonstrations,
+            where designing effective observation encoders is essential for
+            policy generalization. However, existing methods often struggle
+            to generalize under spatial and visual randomizations, instead
+            tending to overfit. To address this challenge, we propose <b>Visual-
+            Geometry Diffusion Policy (VGDP)</b>, a multimodal imitation
+            learning framework that fuses RGB images and point clouds
+            through a cross-attention mechanism, fully leveraging 3D representations
+            while incorporating the long-overlooked benefits of
+            2D visual features. Across a benchmark of 18 simulated tasks
+            and 3 real-world tasks using 7 different observation encoders,
+            VGDP prevails other policies with an average performance
+            improvement of <b>39.1%</b>. More importantly, VGDP demonstrates
+            strong robustness under visual and spatial perturbations,
+            surpassing baselines with an average improvement of <b>41.5%</b>
+            in different visual conditions and <b>15.2%</b> in different spatial
+            settings.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+<!-- ================== Key Attributes ================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Key Attributes</h2>
+    
+    <!-- First Key Attribute -->
+    <div class="content" style="margin-bottom: 3rem;">
+      <h3 class="title is-4" style="text-align: left;">Effective</h3>
+      <p style="text-align: justify; margin-bottom: 1.5rem;">
+        VGDP is evaluated across simulation and real-world domains against 6 baselines.
+        Simulation experiments cover LIBERO, ManiSkill, and RLBench, each with three domain randomization levels, while real-world tests span three diverse manipulation tasks.
+        We are excited to observe that VGDP consistently outperforms all baselines by a significant margin in both simulation and real-world settings, with an average improvement of <b></b>39.1%</b>.
+      </p>
+      <figure class="image">
+        <img src="static/images/Effective.png" alt="Effectiveness Visualization" loading="lazy"/>
+      </figure>
+    </div>
+
+    <!-- Second Key Attribute -->
+    <div class="content" style="margin-bottom: 3rem;">
+      <h3 class="title is-4" style="text-align: left;">Robust</h3>
+      <p style="text-align: justify; margin-bottom: 1.5rem;">
+      We evaluate VGDP under diverse visual and spatial perturbations.
+      Across shifts in position, lighting, texture, and camera viewpoint, VGDP maintains a consistently high and stable success rate, highlighting its strong robustness and generalization ability.
+      </p>
+      <figure class="image">
+        <img src="static/images/Robust.png" alt="Robust Visualization" loading="lazy"/>
+      </figure>
+    </div>
+
+    <!-- Third Key Attribute -->
+    <div class="content" style="margin-bottom: 0rem;">
+      <h3 class="title is-4" style="text-align: left;">Transferable</h3>
+      <p style="text-align: justify; margin-bottom: 1.5rem;">
+        VGDP demonstrates strong 0-shot transferability across diverse domains and tasks even trained within a narrow distribution. It transfers to unseen lighting, positions and objects.
+      </p>
+      <figure class="image">
+        <img src="static/images/Transferable.png" alt="Transferable Visualization" loading="lazy"/>
+      </figure>
+    </div>
+
+  </div>
+</section>
+<!-- ================== End Key Attributes ================== -->
+
+<!-- ================== Methodology ================== -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Methodology</h2>
+    <div class="content" style="text-align: justify;">
+      <p>
+      By jointly encoding RGB images and point clouds into a shared latent space with modality-aware fusion, VGDP constructs a holistic 3D visual representation of the environment.
+      Dropout-guided fusion proves critical for improving both accuracy and robustness.
+      </p>
+    </div>
+  </div>
+  <!-- 图片使用更宽的容器 -->
+  <div class="container" style="max-width: 1000px;">
+    <figure class="image" style="margin: 1rem 0; padding: 0;">
+      <img src="static/images/pipeline.png" alt="Methodology Visualization" loading="lazy" style="width: 100%; display: block; margin: 0 auto;"/>
+    </figure>
+  </div>
+</section>
+<!-- ================== End Methodology ================== -->
+
+
+<!-- ================== Benchmarking ================== -->
+<section id="benchmarking" class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Experiments and Results</h2>
+
+    <h3 class="bench-subtitle">Insert Plug</h3>
+    <div class="text-content-align-820">
+      In the insert plug task, the robot should insert a plug into a socket. The position of the plug is randomized evenly in 100 positions in a 20cm*20cm square.
+    </div>
+      <!-- 上大下三布局 -->
+      <div class="video-layout-1-top-3-bottom">
+        <!-- 上方大视频 -->
+        <div class="top-large-video">
+          <video class="bench-video" autoplay muted controls loop preload="metadata">
+            <source src="static/videos/InsertPlug_VGDP.mp4" type="video/mp4">
+          </video>
+          <p class="caption">VGDP</p>
+        </div>
+        
+        <!-- 下方三个小视频 -->
+        <div class="bottom-three-videos">
+          <div class="bottom-video-item">
+            <video class="bench-video" autoplay muted loop preload="metadata">
+              <source src="static/videos/InsertPlug_DP.mp4" type="video/mp4">
+            </video>
+            <p class="caption">Diffusion Policy(RGB)</p>
+          </div>
+          <div class="bottom-video-item">
+            <video class="bench-video" autoplay muted loop preload="metadata">
+              <source src="static/videos/InsertPlug_RGBD.mp4" type="video/mp4">
+            </video>
+            <p class="caption">Diffusion Policy(RGBD)</p>
+          </div>
+          <div class="bottom-video-item">
+            <video class="bench-video" autoplay muted loop preload="metadata">
+              <source src="static/videos/InsertPlug_DP3.mp4" type="video/mp4">
+            </video>
+            <p class="caption">DP3</p>
+          </div>
+        </div>
+      </div>
+
+    <div class="text-content-align-820">
+      During evaluation, we also test the policy with the tablet placed in different positions and replaced with a pair of Airpods.
+    </div>
+    
+    <div class="top-media-row">
+      <div class="top-media-item">
+        <video class="top-media-visual" autoplay muted controls loop preload="metadata">
+          <source src="static/videos/InsertPlug_Pad_pos.mp4" type="video/mp4">
+        </video>
+        <p class="caption">Tablet in Different Position</p>
+      </div>
+      <div class="top-media-item">
+        <video class="top-media-visual" autoplay muted controls loop preload="metadata">
+          <source src="static/videos/InsertPlug_Airpods.mp4" type="video/mp4">
+        </video>
+        <p class="caption">Replaced with Airpods</p>
+      </div>
+    </div>
+
+    <h3 class="bench-subtitle">Pour Cereal</h3>
+    <div class="text-content-align-1200">
+      In the pour cereal task, the robot should pour cereal from a bowl into a plate. We train the policy in a fixed environment, while testing its strengths in both fitting into the distribution and 0-shot transferring to unseen object and lighting conditions.
+    </div>
+      <div class="video-layout-1-top-3-bottom">
+    </div>
+    
+    <!-- 一大四小布局 -->
+    <div class="video-layout-1-4">
+      <!-- 左侧大视频 -->
+      <div class="large-video-container">
+        <video class="bench-video" autoplay muted controls loop preload="metadata">
+          <source src="static/videos/Pour_1_speed_20_hdrfix_h264.mp4" type="video/mp4">
+        </video>
+      </div>
+      
+      <!-- 右侧2x2小视频网格 -->
+      <div class="small-videos-grid">
+        <div>
+          <div class="small-video-item">
+            <video class="bench-video" autoplay muted loop preload="metadata">
+              <source src="static/videos/Pour_OOD_speed_20_hdrfix_h264.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="small-video-item">
+            <video class="bench-video" autoplay muted loop preload="metadata">
+              <source src="static/videos/Pour_Yogurt_Can_speed_20_hdrfix_h264.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="small-video-item">
+            <video class="bench-video" autoplay muted loop preload="metadata">
+              <source src="static/videos/Pour_Drawer_speed_20_hdrfix_h264.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="small-video-item">
+            <video class="bench-video" autoplay muted loop preload="metadata">
+              <source src="static/videos/Pour_Bowl_speed_20_hdrfix_h264.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+      <div class="transfer-arrow" role="img" aria-label="0-shot transfer from training distribution to diverse scenarios">
+        <span>0-shot Transfer</span>
+      </div>
+      <p class="caption training-caption">Training: a consistent scene with fixed lighting and object</p>
+      <p class="caption transfer-caption">Transfer: various distributions of flowing rgb light strip and objects of different shapes and sizes</p>
+    </div>
+
+    <h3 class="bench-subtitle">Pick Butter</h3>
+    <div class="text-content-align-820">
+      THe Pick Butter task imitates the same task in Libero-objects, where we aim to pick the butter from a cluttered table and place it into the basket.
+    </div>
+    <!-- 上大下三布局 -->
+      <div class="video-layout-1-top-3-bottom">
+      <!-- 上方大视频 -->
+      <div class="top-large-video">
+        <video class="bench-video" autoplay muted controls loop preload="metadata">
+          <source src="static/videos/VGDP_Butter_speed_20_hdrfix_h264.mp4" type="video/mp4">
+        </video>
+        <p class="caption">VGDP</p>
+      </div>
+      
+
+    </div>
+    <div class="text-content-align-820">
+      Aside of the findings in VGDP's effectiveness, we also discovered the surprisingly aligning results with the same task in simulation. We find that strongly domain-randomized simulation benchmarks can well reflect the performance in real-world settings.
+    </div>
+    <div class="media-grid">
+      <figure class="media-item">
+        <div class="media-square">
+          <img class="media-visual" src="static/images/Sim2RealGap.png" alt="Simulation vs Real-world Comparison" loading="lazy"/>
+        </div>
+        <figcaption class="media-caption">Performance comparison between simulation and real-world settings</figcaption>
+      </figure>
+      <figure class="media-item">
+        <div class="media-square">
+          <video class="media-video" autoplay muted loop controls preload="metadata">
+            <source src="static/videos/PickButter_sim.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption class="media-caption">Demo Rollout in Simulation </figcaption>
+      </figure>
+      <figure class="media-item">
+        <div class="media-square">
+          <video class="media-video" autoplay muted loop controls preload="metadata">
+            <source src="static/videos/VGDP_Butter_speed_20_hdrfix_h264.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption class="media-caption">Mimic Task in Real-world</figcaption>
+      </figure>
+    </div>
+
+    <h3 class="bench-subtitle">Pick Bottle</h3>
+    <div class="text-content-align-820">
+      The Pick Bottle task evaluates spatial generalization in a precision-critical setting. The robot must reach the bottle cap with sub-centimeter accuracy (≤1 cm) in order to successfully grasp it. During training, the bottle is placed at 30 distinct locations, and performance is assessed across all 143 grid positions in the workspace.
+    </div>
+    <!-- 上大下三布局 -->
+    <div class="top-media-row">
+      <div class="top-media-item">
+        <video class="top-media-visual" autoplay muted controls loop preload="metadata">
+          <source src="static/videos/final_hdrfix_h264.mp4" type="video/mp4">
+        </video>
+        <p class="caption">Generalize in training distribution</p>
+      </div>
+      <div class="top-media-item">
+        <video class="top-media-visual" autoplay muted controls loop preload="metadata">
+          <source src="static/videos/PickBottle_OOD_speed_2_hdrfix_h264.mp4" type="video/mp4">
+        </video>
+        <p class="caption">Transfer to extreme lighting shift</p>
+      </div>
+    </div>
+
+
+    <!-- Simulation Benchmark (单视频版本) -->
+    <h3 class="bench-subtitle">Simulation Tasks</h3>
+    We conduct our simulation benchmarks in RoboVerse, evaluating tasks from LIBERO, ManiSkill, and RLBench. All tasks are domain-randomized at three levels using a unified simulation codebase.
+
+    <div class="bench-grid">
+      <div class="big item">
+        <div class="video-scroll-container">
+          <video class="bench-video-scrollable" autoplay muted loop playsinline preload="metadata">
+            <source src="static/videos/simulation_tasks.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="caption">Simulation Overview</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+</section>
+
+
+
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article@misc{tang2025visualgeometrydiffusionpolicyrobust,
+        title={Visual-Geometry Diffusion Policy: Robust Generalization via Complementarity-Aware Multimodal Fusion}, 
+        author={Yikai Tang and Haoran Geng and Sheng Zang and Pieter Abbeel and Jitendra Malik},
+        year={2025},
+        eprint={2511.22445},
+        archivePrefix={arXiv},
+        primaryClass={cs.RO},
+        url={https://arxiv.org/abs/2511.22445}, 
+  }</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+<style>
+  .media-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 2rem auto 0;
+    max-width: 1200px;
+    align-items: start;
+  }
+
+  .media-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    margin: 0;
+    width: 100%;
+  }
+
+  .media-square {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .media-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .media-visual {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background-color: #fff;
+  }
+
+  .media-caption {
+    margin-top: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 1024px) {
+    .media-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .media-square {
+      max-width: 420px;
+      margin: 0 auto;
+    }
+  }
+
+  /* 一大四小布局容器 */
+  .video-layout-1-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "large small"
+      "arrow arrow"
+      "training transfer";
+    gap: 12px;
+    margin: 2rem auto;
+    max-width: 1200px;
+    align-items: start; /* 顶部对齐 */
+  }
+
+  /* 左侧大视频容器 */
+  .large-video-container {
+    grid-area: large;
+  }
+
+  .large-video-container video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+  }
+
+  /* 右侧2x2小视频网格容器 */
+  .small-videos-grid {
+    grid-area: small;
+    display: block;
+  }
+
+  /* 2x2视频网格 */
+  .small-videos-grid > div:first-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* 确保2x2网格整体是16:9 */
+  }
+
+  /* 小视频项 */
+  .small-video-item {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .small-video-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .transfer-arrow {
+    grid-area: arrow;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 12px;
+    margin: 0.05rem 0 0;
+    border-radius: 999px;
+    background: transparent;
+    color: #0f6a90;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .transfer-arrow::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    right: 22px;
+    height: 3px;
+    border-radius: 999px;
+    background: rgba(39,162,195,0.7);
+  }
+
+  .transfer-arrow::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    border-left: 24px solid rgba(39,162,195,0.8);
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    transform: translateX(-1px);
+  }
+
+  .transfer-arrow span {
+    position: relative;
+    z-index: 1;
+    padding: 0.12rem 0.55rem;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.88);
+    font-size: 0.82rem;
+  }
+
+  .training-caption {
+    grid-area: training;
+  }
+
+  .transfer-caption {
+    grid-area: transfer;
+  }
+
+  .video-layout-1-top-3-bottom {
+    margin: 0.5rem auto 2rem auto;
+    max-width: 1200px;
+  }
+
+  .top-media-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 0.5rem auto 1.5rem auto;
+    max-width: 1200px;
+    align-items: start;
+  }
+
+  .top-media-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .top-media-visual {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .top-media-item .caption {
+    margin-top: 0.5rem;
+  }
+
+  .top-large-video {
+    margin-bottom: 2rem;
+  }
+
+  .top-large-video video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    border-radius: 8px;
+  }
+
+  .bottom-three-videos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .bottom-video-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bottom-video-item video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+    border-radius: 8px;
+  }
+
+  /* 减小主标题和子标题之间的间距 */
+  #benchmarking .title.is-3 {
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.5rem;
+  }
+
+  .bench-subtitle {
+    font-weight: bold;
+    text-align: left;
+    color: #27A2C3;  
+    text-decoration: none !important;
+    border-bottom: none !important;
+    margin-top: 0.5rem;
+    margin-bottom: 0.1rem;
+    font-size: 1.5rem;
+  }
+
+  /* 文字内容对齐样式 - 与视频容器左对齐（统一宽度为1200px） */
+  .text-content-align-820,
+  .text-content-align-1200,
+  .text-content-align-960 {
+    max-width: 1200px;
+    margin: 0 auto 0.5rem auto;
+    text-align: left;
+  }
+
+  .bench-grid, .sim-grid {
+    max-width: 1200px;    
+    margin: 0 auto;      
+  }
+
+  .bench-grid .big {
+    aspect-ratio: 16 / 9;    
+    width: 100%;
+  }
+
+  .small-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .small-row .item {
+    flex: 1 1 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .sim-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .bench-video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;  
+    border-radius: 8px;
+  }
+
+  /* 可滚动视频容器 - 用于11:3长宽比的视频 */
+  .video-scroll-container {
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: 8px;
+    position: relative;
+    /* 确保内容可以超出容器 */
+    display: flex;
+    /* 自定义滚动条样式 */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+  }
+
+  .video-scroll-container::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .video-scroll-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  .video-scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+  }
+
+  .video-scroll-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .bench-video-scrollable {
+    height: 100%;
+    /* 视频是11:3长宽比，容器是16:9 */
+    /* 容器宽度 = W, 容器高度 = W * 9/16 (因为16:9比例) */
+    /* 视频高度 = 容器高度 = W * 9/16 */
+    /* 视频宽度 = 视频高度 * (11/3) = (W * 9/16) * (11/3) = W * 33/16 */
+    /* 所以视频宽度 = 容器宽度 * 33/16 ≈ 容器宽度 * 2.0625 */
+    width: calc(100% * 33 / 16);
+    min-width: calc(100% * 33 / 16);
+    display: block;
+    border-radius: 8px;
+    /* 确保视频不会被压缩 */
+    flex-shrink: 0;
+    /* 不使用 object-fit，让视频保持原始尺寸和比例 */
+  }
+
+  .caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 6px;
+  }
+
+  @media (max-width: 768px) {
+    .video-layout-1-4 {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "large"
+        "small"
+        "arrow"
+        "training"
+        "transfer";
+    }
+    .transfer-arrow {
+      margin-top: 1.25rem;
+    }
+    .top-media-row {
+      grid-template-columns: 1fr;
+    }
+    .small-row { flex-direction: column; }
+    .sim-grid  { grid-template-columns: 1fr; }
+  }
+</style>
+
+
+
+
+
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+<script>
+  // 设置可滚动视频的宽度
+  document.addEventListener('DOMContentLoaded', function() {
+    const scrollableVideo = document.querySelector('.bench-video-scrollable');
+    if (scrollableVideo) {
+      const container = scrollableVideo.closest('.video-scroll-container');
+      if (container) {
+        // 等待视频加载后设置宽度
+        scrollableVideo.addEventListener('loadedmetadata', function() {
+          const containerHeight = container.clientHeight;
+          // 视频是11:3比例，所以宽度 = 高度 * (11/3)
+          const videoWidth = containerHeight * (11 / 3);
+          scrollableVideo.style.width = videoWidth + 'px';
+          scrollableVideo.style.height = '100%';
+        });
+        
+        // 如果视频已经加载，立即设置
+        if (scrollableVideo.readyState >= 2) {
+          const containerHeight = container.clientHeight;
+          const videoWidth = containerHeight * (11 / 3);
+          scrollableVideo.style.width = videoWidth + 'px';
+          scrollableVideo.style.height = '100%';
+        }
+      }
+    }
+  });
+</script>
+
+  </body>
+  </html>
