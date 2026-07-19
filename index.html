@@ -198,9 +198,9 @@
               <span class="author-block">
                 <a href="https://geng-haoran.github.io/" target="_blank">Haoran Geng</a><sup>1*†</sup>,</span>
               <span class="author-block">
-                Jindou Jia<sup>2</sup>,</span>
+                <a href="https://jiajindou.github.io" target="_blank">Jindou Jia</a><sup>2</sup>,</span>
               <span class="author-block">
-                Yuxuan Hu<sup>2</sup>,</span>
+                <a href="https://yuxuanhu9.github.io" target="_blank">Yuxuan Hu</a><sup>2</sup>,</span>
               <span class="author-block">
                 <a href="https://github.com/szang18" target="_blank">Sheng Zang</a><sup>2</sup>,</span>
               <span class="author-block">
@@ -350,7 +350,7 @@
     <h2 class="title is-3 has-text-centered">Key Attributes</h2>
     <div class="content" style="text-align: justify; margin-bottom: 2.5rem;">
       <p>
-        Extensive experiments show that DIPOLE exhibits five key strengths. Aggregated across 18 simulated and 4 real-world tasks, DIPOLE outperforms all baselines by 39.1% on average. Ablation studies indicate that these gains do not stem from any individual component, but from a fusion design that systematically enforces complementarity between modalities.
+        We evaluate DIPOLE on a unified benchmark of 22 manipulation tasks &mdash; 18 simulated tasks drawn from LIBERO, RLBench, and ManiSkill, plus 4 real-world tasks on a Franka arm &mdash; against six baselines spanning RGB, RGB-D, and point-cloud encoders. Across the full suite DIPOLE outperforms all baselines by <b>39.1%</b> on average, and the gains follow a single theme: a policy trained to keep each modality individually informative converts complementarity into stability, robustness, precision, transfer &mdash; and capabilities neither modality can deliver alone.
       </p>
     </div>
 
@@ -358,7 +358,7 @@
     <div class="content" style="margin-bottom: 3rem;">
       <h3 class="title is-4" style="text-align: left;">Stable high performance across diverse tasks</h3>
       <p style="text-align: justify; margin-bottom: 1.5rem;">
-        Across our 18-task simulation benchmark DIPOLE attains a 65% mean success rate, two to six times the 11%&ndash;33% baseline range, with the lowest per-task variation.
+        One recipe, no per-task tuning. On 18 simulated tasks &mdash; each run under three levels of domain randomization &mdash; DIPOLE attains a <b>65%</b> mean success rate, two to six times the 11%&ndash;33% that the six baselines span, and it leads on every real-world task as well. Just as telling is <i>how</i> it wins: competing encoders shine on one task family and collapse on another (point-cloud encoders ace CloseBox yet drop to 0% on Butter), whereas DIPOLE stays near the top everywhere, with the lowest cross-task variation of any method (CoV 30%, 1.5&ndash;4.4&times; smaller than the baselines). High mean with low variance is the signature of a single generalist policy rather than one tuned to a favorable task family.
       </p>
       <figure class="dipole-chart">
         <div class="dipole-legend" id="dipole-legend-1"></div>
@@ -368,11 +368,11 @@
             <div class="dipole-scroll"><div id="dipole-chart-1a"></div></div>
           </div>
           <div class="dipole-panel" style="flex: 1 1 300px; max-width: 340px;">
-            <p class="dipole-panel-title">Cross-task variation (CoV %, &#8595; lower is more stable)</p>
+            <p class="dipole-panel-title">Cross-task variation (CoV %, &#8595;)</p>
             <div class="dipole-scroll"><div id="dipole-chart-1b"></div></div>
           </div>
         </div>
-        <figcaption class="dipole-source">Table 3 &amp; Table S5 of the paper. Success rates averaged over three domain-randomization levels.</figcaption>
+        <figcaption class="dipole-source">Table 3 &amp; Table S5 of the paper. Success rates averaged over three domain-randomization levels; lower CoV = more stable across tasks.</figcaption>
       </figure>
       <details class="dipole-details">
         <summary>Data table</summary>
@@ -400,7 +400,7 @@
     <div class="content" style="margin-bottom: 3rem;">
       <h3 class="title is-4" style="text-align: left;">Robustness to visual changes</h3>
       <p style="text-align: justify; margin-bottom: 1.5rem;">
-        Under material, table-position, and viewpoint shifts, DIPOLE outperforms six baselines spanning RGB and RGBD encoders (ResNet, ViT, MultiMAE) and point-cloud encoders (DP3, PonderV2) by 41.5% on average, with cross-randomization variance of 2.53%, roughly 11&times; more stable than competing encoders.
+        What happens when vision becomes unreliable? Material, table-position, and viewpoint shifts attack exactly the cues an RGB policy depends on &mdash; so we vary all three, progressively, across randomization levels L0&ndash;L2. DIPOLE's success rate moves by only <b>2.53%</b> across levels, roughly <b>11&times;</b> steadier than the 28.5% baseline average, and at the most aggressive L2 it still holds 64% while every baseline falls to 8&ndash;21%, leaving an average margin of 41.5%. The invariance carries beyond simulation: DIPOLE passes the real-world color-cycling Light-Strip test zero-shot, where both DP(RGB) and DP(RGBD) fail. When appearance drifts, the geometric stream quietly absorbs the perturbations that most degrade unimodal policies.
       </p>
       <figure class="dipole-chart">
         <div class="dipole-legend" id="dipole-legend-2"></div>
@@ -438,17 +438,11 @@
     <div class="content" style="margin-bottom: 3rem;">
       <h3 class="title is-4" style="text-align: left;">Spatial generalization at sub-centimeter precision</h3>
       <p style="text-align: justify; margin-bottom: 1.5rem;">
-        Grounded in a richer spatial representation, DIPOLE raises the success rate by 15.2% under randomized object placement and by 18.77% on tasks requiring sub-centimeter precision.
+        Geometry, in turn, is not always enough on its own: sub-centimeter tasks demand a precision that a downsampled point cloud is too coarse to resolve. By inheriting RGB's fine-grained visual detail on top of the point cloud's placement-invariant structure, DIPOLE handles both at once. Trained on only 30 grid positions and evaluated across the full 143-position workspace, it fetches a bottle with a 2&nbsp;cm cap at <b>22.4%</b> success against 1.4%&ndash;18% for the baselines &mdash; a <b>+15.2%</b> margin under randomized placement. On contact-rich plug insertion, which demands sub-centimeter vertical accuracy, it leads at <b>36%</b> while DP3 fails entirely at the precision-critical grasp, a <b>+18.77%</b> average gain on precision tasks. The success grids below make the difference visible at a glance.
       </p>
       <figure class="dipole-chart">
-        <div class="dipole-legend" id="dipole-legend-3"></div>
-        <div class="dipole-panels">
-          <div class="dipole-panel" style="flex: 1 1 300px; max-width: 460px;">
-            <p class="dipole-panel-title">Success rate (%, &#8593;)</p>
-            <div class="dipole-scroll"><div id="dipole-chart-3"></div></div>
-          </div>
-        </div>
-        <figcaption class="dipole-source">Table 1 of the paper (real-world tasks).</figcaption>
+        <img src="static/images/Figure5_SpatialRandomization.png" alt="Real-world spatial randomization results: per-position success grids for Fetch Bottle (143 positions) and Insert Plug (25 positions), comparing DIPOLE with three baselines" loading="lazy" style="width: 100%; display: block;"/>
+        <figcaption class="dipole-source">Real-world spatial randomization results (Figure 5 of the paper). Fetch Bottle: policies trained on the 30 dotted grid positions and evaluated on all 143; Insert Plug: evaluated on 25 evenly distributed positions. Dark green and light green mark IID and OOD success, white marks failure.</figcaption>
       </figure>
       <details class="dipole-details">
         <summary>Data table</summary>
@@ -468,53 +462,13 @@
 
     <!-- Attribute 4 -->
     <div class="content" style="margin-bottom: 3rem;">
-      <h3 class="title is-4" style="text-align: left;">Emergent capability beyond either modality</h3>
-      <p style="text-align: justify; margin-bottom: 1.5rem;">
-        DIPOLE attains 72.3% success on tasks where each unimodal encoder fails almost completely (&le;1%).
-      </p>
-      <figure class="dipole-chart">
-        <div class="dipole-legend" id="dipole-legend-4"></div>
-        <div class="dipole-panels">
-          <div class="dipole-panel" style="flex: 1 1 300px; max-width: 520px;">
-            <p class="dipole-panel-title">Success rate (%, &#8593;)</p>
-            <div class="dipole-scroll"><div id="dipole-chart-4"></div></div>
-          </div>
-        </div>
-        <figcaption class="dipole-source">Table S6 of the paper.</figcaption>
-      </figure>
-      <details class="dipole-details">
-        <summary>Data table</summary>
-        <div class="dipole-table-wrap">
-          <table class="table is-narrow is-bordered is-striped">
-            <thead>
-              <tr><th>Task &mdash; success rate (%)</th><th>ResNet (RGB only)</th><th>DP3 (PC only)</th><th>DIPOLE</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>AlphabetSoup L1</td><td>0</td><td>0</td><td>67</td></tr>
-              <tr><td>AlphabetSoup L2</td><td>0</td><td>0</td><td>73</td></tr>
-              <tr><td>Tomato L1</td><td>1</td><td>0</td><td>68</td></tr>
-              <tr><td>Tomato L2</td><td>1</td><td>0</td><td>81</td></tr>
-              <tr><td><b>Mean</b></td><td>0.5</td><td>0</td><td>72.3</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
-    </div>
-
-    <!-- Attribute 5 -->
-    <div class="content" style="margin-bottom: 0rem;">
       <h3 class="title is-4" style="text-align: left;">Zero-shot transfer to unseen objects</h3>
       <p style="text-align: justify; margin-bottom: 1.5rem;">
-        DIPOLE generalizes to all six zero-shot transfer scenarios, spanning unseen objects, devices, and visual conditions.
+        Can one policy survive objects it has never seen? We replace the Pour-Cereal plate with a transparent drawer, a bowl, and a yogurt cup; swap the Insert-Plug iPad for an AirPods charging case (or move it to a novel position); and re-light Fetch-Bottle with strong color-cycling illumination. DIPOLE passes <b>all six transfers</b>, while no unimodal baseline exceeds three of six &mdash; each one fails precisely where its own modality breaks. The pattern is telling: DIPOLE generalizes by leaning on whichever modality the novel scene still preserves in distribution, rather than requiring every stream to remain intact. Robust generalization need not come from scaling demonstrations alone &mdash; it can emerge from observation representations that encode the task-relevant structure of the scene more faithfully.
       </p>
       <figure class="dipole-chart">
-        <div class="dipole-panels">
-          <div class="dipole-panel" style="flex: 1 1 300px; max-width: 360px;">
-            <p class="dipole-panel-title">Zero-shot scenarios passed (out of 6, &#8593;)</p>
-            <div class="dipole-scroll"><div id="dipole-chart-5"></div></div>
-          </div>
-        </div>
-        <figcaption class="dipole-source">Table 4 of the paper (real-world zero-shot transfer).</figcaption>
+        <img src="static/images/Figure6_ZeroShotTransfer.png" alt="Zero-shot transfer settings: Pour-Cereal target replaced with a drawer, bowl, and cup; Insert-Plug iPad moved or replaced with an AirPods case; Fetch-Bottle under color-cycling illumination" loading="lazy" style="width: 100%; display: block;"/>
+        <figcaption class="dipole-source">Zero-shot transfer settings (Figure 6 of the paper). Top: in Pour-Cereal, the target plate is replaced with containers of varying sizes and shapes. Bottom-left: in Insert-Plug, the iPad is moved to a novel position or replaced with an AirPods charging case. Bottom-right: in Fetch-Bottle, the original lighting is swapped for strong color-cycling illumination.</figcaption>
       </figure>
       <details class="dipole-details">
         <summary>Data table</summary>
@@ -537,6 +491,29 @@
       </details>
     </div>
 
+    <!-- Attribute 5 -->
+    <div class="content" style="margin-bottom: 0rem;">
+      <h3 class="title is-4" style="text-align: left;">Emergent capability beyond either modality</h3>
+      <p style="text-align: justify; margin-bottom: 1.5rem;">
+        The most striking result comes last: fusion that exceeds the sum of its parts. On four task settings where both unimodal encoders fail almost completely when trained alone &mdash; &le;1% success for the RGB-only ResNet and the point-cloud-only DP3 &mdash; DIPOLE recovers to <b>72.3%</b> mean success. Ablations isolate modality-wise dropout as the mechanism: remove it, and the fused model reverts to its strongest unimodal baseline no matter which fusion architecture is used. In other words, the emergent gain comes from <i>how DIPOLE is trained</i>, not from the fusion module itself &mdash; even a modality that is weak on a task still supplies complementary cues, so fusion produces capabilities neither stream can deliver alone.
+      </p>
+      <div class="dipole-table-wrap">
+        <table class="table is-narrow is-bordered dipole-inline-table">
+          <thead>
+            <tr><th>Setting &mdash; success rate (%)</th><th>ResNet (RGB only)</th><th>DP3 (PC only)</th><th class="dipole-hl">DIPOLE</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>AlphabetSoup L1</td><td>0</td><td>0</td><td class="dipole-hl">67</td></tr>
+            <tr><td>AlphabetSoup L2</td><td>0</td><td>0</td><td class="dipole-hl">73</td></tr>
+            <tr><td>Tomato L1</td><td>1</td><td>0</td><td class="dipole-hl">68</td></tr>
+            <tr><td>Tomato L2</td><td>1</td><td>0</td><td class="dipole-hl">81</td></tr>
+            <tr><td><b>Mean</b></td><td>0.5</td><td>0</td><td class="dipole-hl"><b>72.3</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="dipole-source">Table S6 of the paper. Settings where each unimodal encoder fails (&le;1%) when trained alone; L1/L2 are domain-randomization levels.</p>
+    </div>
+
   </div>
 
   <style>
@@ -555,6 +532,9 @@
     .dipole-table-wrap { overflow-x: auto; margin-top: 0.5rem; }
     .content .dipole-table-wrap table { font-size: 0.8rem; }
     .dipole-table-wrap td, .dipole-table-wrap th { white-space: nowrap; }
+    .content .dipole-table-wrap table.dipole-inline-table { font-size: 0.95rem; margin-left: auto; margin-right: auto; }
+    .dipole-inline-table td.dipole-hl { background: #eaf2fb; font-weight: 600; }
+    .dipole-inline-table th.dipole-hl { background: #eaf2fb; color: #2a78d6; }
   </style>
 
   <script>
@@ -579,17 +559,6 @@
       { name: "RGBD-MultiMAE", color: COLORS.MMAE },
       { name: "DP3", color: COLORS.DP3 },
       { name: "PonderV2", color: COLORS.PONDER }
-    ];
-    var SERIES4 = [
-      { name: "DIPOLE", color: COLORS.DIPOLE },
-      { name: "DP (RGB)", color: COLORS.RGB },
-      { name: "DP (RGBD)", color: COLORS.RGBD },
-      { name: "DP3", color: COLORS.DP3 }
-    ];
-    var SERIES3 = [
-      { name: "ResNet (RGB only)", color: COLORS.RGB },
-      { name: "DP3 (PC only)", color: COLORS.DP3 },
-      { name: "DIPOLE", color: COLORS.DIPOLE }
     ];
     var METHOD_GROUPS7 = [
       { name: "DIPOLE", lines: ["DIPOLE"] },
@@ -619,18 +588,6 @@
       [64, 19, 21, 20, 20, 8, 8]      // L2
     ];
     var V2B = [["2.53"], ["32.72"], ["35.01"], ["45.28"], ["37.23"], ["5.06"], ["15.43"]];
-    var V3 = [
-      ["22.38", "18", "2.10", "1.40"], // Fetch Bottle
-      ["36", "25", "16", "0"]          // Insert Plug
-    ];
-    var V4 = [
-      ["0", "0", "67"],                // AlphabetSoup L1
-      ["0", "0", "73"],                // AlphabetSoup L2
-      ["1", "0", "68"],                // Tomato L1
-      ["1", "0", "81"],                // Tomato L2
-      ["0.5", "0", "72.3"]             // Mean
-    ];
-    var V5 = [[{ v: 6, d: "6/6" }], [{ v: 3, d: "3/6" }], [{ v: 2, d: "2/6" }], [{ v: 3, d: "3/6" }]];
 
     function esc(t) {
       return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -655,7 +612,7 @@
       var groupLines = cfg.groups.map(function (g) { return g.lines || [g.label]; });
       var maxLines = 1;
       groupLines.forEach(function (l) { if (l.length > maxLines) maxLines = l.length; });
-      var mB = 12 + maxLines * (labelFont + 3);
+      var mB = cfg.mB || (12 + maxLines * (labelFont + 3));
       var H = mT + plotH + mB;
       var barW = cfg.barW || Math.max(4, Math.min(24, Math.floor((groupW * 0.72 - 2 * (nS - 1)) / nS)));
       var innerW = nS * barW + 2 * (nS - 1);
@@ -736,11 +693,9 @@
     function renderAll() {
       renderLegend("dipole-legend-1", SERIES7);
       renderLegend("dipole-legend-2", SERIES7);
-      renderLegend("dipole-legend-3", SERIES4);
-      renderLegend("dipole-legend-4", SERIES3);
 
       renderChart("dipole-chart-1a", {
-        width: 580, minWidth: 580, yMax: 100, yStep: 20, barW: 7, labelFont: 9.5,
+        width: 580, minWidth: 580, yMax: 100, yStep: 20, barW: 7, labelFont: 9.5, mB: 35,
         series: SERIES7,
         aria: "Success rate per task for DIPOLE and six baselines across six tasks and their average",
         groups: [
@@ -775,54 +730,12 @@
       });
 
       renderChart("dipole-chart-2b", {
-        width: 340, minWidth: 320, yMax: 50, yStep: 10, barW: 22, labelFont: 8.5,
+        width: 340, minWidth: 320, yMax: 50, yStep: 10, barW: 22, labelFont: 8.5, mB: 38,
         series: [{ name: "" }], colorByGroup: COLORS7, metric: "Cross-randomization dispersion",
         aria: "Cross-randomization dispersion per method, lower is better",
         groups: METHOD_GROUPS7,
         values: V2B,
         label: function (gi, si) { return gi === 0 ? "2.53%" : null; }
-      });
-
-      renderChart("dipole-chart-3", {
-        width: 460, minWidth: 420, yMax: 50, yStep: 10, barW: 24, dlFont: 9.5,
-        series: SERIES4,
-        aria: "Success rate on two real-world spatial-precision tasks for DIPOLE and three baselines",
-        groups: [
-          { name: "Fetch Bottle (randomized placement)", lines: ["Fetch Bottle", "(randomized placement)"] },
-          { name: "Insert Plug (sub-cm insertion)", lines: ["Insert Plug", "(sub-cm insertion)"] }
-        ],
-        values: V3,
-        label: function (gi, si) { return V3[gi][si] + "%"; }
-      });
-
-      renderChart("dipole-chart-4", {
-        width: 520, minWidth: 500, yMax: 100, yStep: 20, barW: 22,
-        series: SERIES3,
-        aria: "Success rate on tasks where each unimodal encoder fails, for RGB-only, point-cloud-only, and DIPOLE",
-        groups: [
-          { label: "AlphabetSoup L1" }, { label: "AlphabetSoup L2" },
-          { label: "Tomato L1" }, { label: "Tomato L2" },
-          { label: "Mean", band: true }
-        ],
-        values: V4,
-        label: function (gi, si) {
-          if (si < 2) return { t: V4[gi][si] + "%", c: "#52514e" };
-          if (si === 2 && gi === 4) return "72.3%";
-          return null;
-        }
-      });
-
-      renderChart("dipole-chart-5", {
-        width: 360, minWidth: 320, yMax: 6, yStep: 1, barW: 24,
-        series: [{ name: "" }],
-        colorByGroup: [COLORS.DIPOLE, COLORS.RGB, COLORS.RGBD, COLORS.DP3],
-        metric: "Scenarios passed", unit: "",
-        aria: "Number of zero-shot transfer scenarios passed out of six per method",
-        groups: [
-          { label: "DIPOLE" }, { label: "DP (RGB)" }, { label: "DP (RGBD)" }, { label: "DP3" }
-        ],
-        values: V5,
-        label: function (gi, si) { return V5[gi][0].d; }
       });
     }
 
