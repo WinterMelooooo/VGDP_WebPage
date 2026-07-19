@@ -340,44 +340,491 @@
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Key Attributes</h2>
-    
-    <!-- First Key Attribute -->
-    <div class="content" style="margin-bottom: 3rem;">
-      <h3 class="title is-4" style="text-align: left;">Effective</h3>
-      <p style="text-align: justify; margin-bottom: 1.5rem;">
-        VGDP is evaluated across simulation and real-world domains against 6 baselines.
-        Simulation experiments cover LIBERO, ManiSkill, and RLBench, each with three domain randomization levels, while real-world tests span three diverse manipulation tasks.
-        We are excited to observe that VGDP consistently outperforms all baselines by a significant margin in both simulation and real-world settings, with an average improvement of <b></b>39.1%</b>.
+    <div class="content" style="text-align: justify; margin-bottom: 2.5rem;">
+      <p>
+        Extensive experiments show that DIPOLE exhibits five key strengths. Aggregated across 18 simulated and 4 real-world tasks, DIPOLE outperforms all baselines by 39.1% on average. Ablation studies indicate that these gains do not stem from any individual component, but from a fusion design that systematically enforces complementarity between modalities.
       </p>
-      <figure class="image">
-        <img src="static/images/Effective.png" alt="Effectiveness Visualization" loading="lazy"/>
-      </figure>
     </div>
 
-    <!-- Second Key Attribute -->
+    <!-- Attribute 1 -->
     <div class="content" style="margin-bottom: 3rem;">
-      <h3 class="title is-4" style="text-align: left;">Robust</h3>
+      <h3 class="title is-4" style="text-align: left;">Stable high performance across diverse tasks</h3>
       <p style="text-align: justify; margin-bottom: 1.5rem;">
-      We evaluate VGDP under diverse visual and spatial perturbations.
-      Across shifts in position, lighting, texture, and camera viewpoint, VGDP maintains a consistently high and stable success rate, highlighting its strong robustness and generalization ability.
+        Across our 18-task simulation benchmark DIPOLE attains a 65% mean success rate, two to six times the 11%&ndash;33% baseline range, with the lowest per-task variation.
       </p>
-      <figure class="image">
-        <img src="static/images/Robust.png" alt="Robust Visualization" loading="lazy"/>
+      <figure class="dipole-chart">
+        <div class="dipole-legend" id="dipole-legend-1"></div>
+        <div class="dipole-panels">
+          <div class="dipole-panel" style="flex: 1.7 1 380px; max-width: 580px;">
+            <p class="dipole-panel-title">Success rate per task (%, &#8593;)</p>
+            <div class="dipole-scroll"><div id="dipole-chart-1a"></div></div>
+          </div>
+          <div class="dipole-panel" style="flex: 1 1 300px; max-width: 340px;">
+            <p class="dipole-panel-title">Cross-task variation (CoV %, &#8595; lower is more stable)</p>
+            <div class="dipole-scroll"><div id="dipole-chart-1b"></div></div>
+          </div>
+        </div>
+        <figcaption class="dipole-source">Table 3 &amp; Table S5 of the paper. Success rates averaged over three domain-randomization levels.</figcaption>
       </figure>
+      <details class="dipole-details">
+        <summary>Data table</summary>
+        <div class="dipole-table-wrap">
+          <table class="table is-narrow is-bordered is-striped">
+            <thead>
+              <tr><th>Task &mdash; success rate (%)</th><th>DIPOLE</th><th>RGB-ResNet18</th><th>RGBD-ResNet18</th><th>RGBD-ViT</th><th>RGBD-MultiMAE</th><th>DP3</th><th>PonderV2</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>CloseBox</td><td>96</td><td>35</td><td>53</td><td>48</td><td>49</td><td>58</td><td>75</td></tr>
+              <tr><td>StackCube</td><td>3</td><td>10</td><td>6</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+              <tr><td>AlphabetSoup</td><td>79</td><td>22</td><td>24</td><td>61</td><td>48</td><td>0</td><td>0</td></tr>
+              <tr><td>Butter</td><td>88</td><td>72</td><td>62</td><td>68</td><td>69</td><td>0</td><td>0</td></tr>
+              <tr><td>OrangeJuice</td><td>53</td><td>17</td><td>18</td><td>31</td><td>33</td><td>7</td><td>8</td></tr>
+              <tr><td>Tomato</td><td>72</td><td>8</td><td>11</td><td>13</td><td>14</td><td>0</td><td>0</td></tr>
+              <tr><td><b>Average</b></td><td>65</td><td>27</td><td>29</td><td>32</td><td>33</td><td>11</td><td>14</td></tr>
+              <tr><td>Cross-task CoV (%)</td><td>30</td><td>52.8</td><td>48.48</td><td>45.49</td><td>43.86</td><td>126.19</td><td>133.33</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
     </div>
 
-    <!-- Third Key Attribute -->
+    <!-- Attribute 2 -->
+    <div class="content" style="margin-bottom: 3rem;">
+      <h3 class="title is-4" style="text-align: left;">Robustness to visual changes</h3>
+      <p style="text-align: justify; margin-bottom: 1.5rem;">
+        Under material, table-position, and viewpoint shifts, DIPOLE outperforms six baselines spanning RGB and RGBD encoders (ResNet, ViT, MultiMAE) and point-cloud encoders (DP3, PonderV2) by 41.5% on average, with cross-randomization variance of 2.53%, roughly 11&times; more stable than competing encoders.
+      </p>
+      <figure class="dipole-chart">
+        <div class="dipole-legend" id="dipole-legend-2"></div>
+        <div class="dipole-panels">
+          <div class="dipole-panel" style="flex: 1.7 1 380px; max-width: 560px;">
+            <p class="dipole-panel-title">Success rate by randomization level (%, &#8593;)</p>
+            <div class="dipole-scroll"><div id="dipole-chart-2a"></div></div>
+          </div>
+          <div class="dipole-panel" style="flex: 1 1 300px; max-width: 340px;">
+            <p class="dipole-panel-title">Cross-randomization dispersion (%, &#8595;)</p>
+            <div class="dipole-scroll"><div id="dipole-chart-2b"></div></div>
+          </div>
+        </div>
+        <figcaption class="dipole-source">Table S4 &amp; Table S5 of the paper.</figcaption>
+      </figure>
+      <details class="dipole-details">
+        <summary>Data table</summary>
+        <div class="dipole-table-wrap">
+          <table class="table is-narrow is-bordered is-striped">
+            <thead>
+              <tr><th>Randomization level &mdash; success rate (%)</th><th>DIPOLE</th><th>RGB-ResNet18</th><th>RGBD-ResNet18</th><th>RGBD-ViT</th><th>RGBD-MultiMAE</th><th>DP3</th><th>PonderV2</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>L0 &middot; original</td><td>68</td><td>46</td><td>43</td><td>44</td><td>48</td><td>12</td><td>19</td></tr>
+              <tr><td>L1 &middot; +material &amp; table position</td><td>64</td><td>17</td><td>23</td><td>36</td><td>32</td><td>13</td><td>15</td></tr>
+              <tr><td>L2 &middot; +camera viewpoint</td><td>64</td><td>19</td><td>21</td><td>20</td><td>20</td><td>8</td><td>8</td></tr>
+              <tr><td>Cross-randomization dispersion (%)</td><td>2.53</td><td>32.72</td><td>35.01</td><td>45.28</td><td>37.23</td><td>5.06</td><td>15.43</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <!-- Attribute 3 -->
+    <div class="content" style="margin-bottom: 3rem;">
+      <h3 class="title is-4" style="text-align: left;">Spatial generalization at sub-centimeter precision</h3>
+      <p style="text-align: justify; margin-bottom: 1.5rem;">
+        Grounded in a richer spatial representation, DIPOLE raises the success rate by 15.2% under randomized object placement and by 18.77% on tasks requiring sub-centimeter precision.
+      </p>
+      <figure class="dipole-chart">
+        <div class="dipole-legend" id="dipole-legend-3"></div>
+        <div class="dipole-panels">
+          <div class="dipole-panel" style="flex: 1 1 300px; max-width: 460px;">
+            <p class="dipole-panel-title">Success rate (%, &#8593;)</p>
+            <div class="dipole-scroll"><div id="dipole-chart-3"></div></div>
+          </div>
+        </div>
+        <figcaption class="dipole-source">Table 1 of the paper (real-world tasks).</figcaption>
+      </figure>
+      <details class="dipole-details">
+        <summary>Data table</summary>
+        <div class="dipole-table-wrap">
+          <table class="table is-narrow is-bordered is-striped">
+            <thead>
+              <tr><th>Task &mdash; success rate (%)</th><th>DIPOLE</th><th>DP (RGB)</th><th>DP (RGBD)</th><th>DP3</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Fetch Bottle (randomized placement)</td><td>22.38</td><td>18</td><td>2.10</td><td>1.40</td></tr>
+              <tr><td>Insert Plug (sub-cm insertion)</td><td>36</td><td>25</td><td>16</td><td>0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <!-- Attribute 4 -->
+    <div class="content" style="margin-bottom: 3rem;">
+      <h3 class="title is-4" style="text-align: left;">Emergent capability beyond either modality</h3>
+      <p style="text-align: justify; margin-bottom: 1.5rem;">
+        DIPOLE attains 72.3% success on tasks where each unimodal encoder fails almost completely (&le;1%).
+      </p>
+      <figure class="dipole-chart">
+        <div class="dipole-legend" id="dipole-legend-4"></div>
+        <div class="dipole-panels">
+          <div class="dipole-panel" style="flex: 1 1 300px; max-width: 520px;">
+            <p class="dipole-panel-title">Success rate (%, &#8593;)</p>
+            <div class="dipole-scroll"><div id="dipole-chart-4"></div></div>
+          </div>
+        </div>
+        <figcaption class="dipole-source">Table S6 of the paper.</figcaption>
+      </figure>
+      <details class="dipole-details">
+        <summary>Data table</summary>
+        <div class="dipole-table-wrap">
+          <table class="table is-narrow is-bordered is-striped">
+            <thead>
+              <tr><th>Task &mdash; success rate (%)</th><th>ResNet (RGB only)</th><th>DP3 (PC only)</th><th>DIPOLE</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>AlphabetSoup L1</td><td>0</td><td>0</td><td>67</td></tr>
+              <tr><td>AlphabetSoup L2</td><td>0</td><td>0</td><td>73</td></tr>
+              <tr><td>Tomato L1</td><td>1</td><td>0</td><td>68</td></tr>
+              <tr><td>Tomato L2</td><td>1</td><td>0</td><td>81</td></tr>
+              <tr><td><b>Mean</b></td><td>0.5</td><td>0</td><td>72.3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+
+    <!-- Attribute 5 -->
     <div class="content" style="margin-bottom: 0rem;">
-      <h3 class="title is-4" style="text-align: left;">Transferable</h3>
+      <h3 class="title is-4" style="text-align: left;">Zero-shot transfer to unseen objects</h3>
       <p style="text-align: justify; margin-bottom: 1.5rem;">
-        VGDP demonstrates strong 0-shot transferability across diverse domains and tasks even trained within a narrow distribution. It transfers to unseen lighting, positions and objects.
+        DIPOLE generalizes to all six zero-shot transfer scenarios, spanning unseen objects, devices, and visual conditions.
       </p>
-      <figure class="image">
-        <img src="static/images/Transferable.png" alt="Transferable Visualization" loading="lazy"/>
+      <figure class="dipole-chart">
+        <div class="dipole-panels">
+          <div class="dipole-panel" style="flex: 1 1 300px; max-width: 360px;">
+            <p class="dipole-panel-title">Zero-shot scenarios passed (out of 6, &#8593;)</p>
+            <div class="dipole-scroll"><div id="dipole-chart-5"></div></div>
+          </div>
+        </div>
+        <figcaption class="dipole-source">Table 4 of the paper (real-world zero-shot transfer).</figcaption>
       </figure>
+      <details class="dipole-details">
+        <summary>Data table</summary>
+        <div class="dipole-table-wrap">
+          <table class="table is-narrow is-bordered is-striped">
+            <thead>
+              <tr><th>Scenario</th><th>DIPOLE</th><th>DP (RGB)</th><th>DP (RGBD)</th><th>DP3</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Drawer</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+              <tr><td>Bowl</td><td>&#10003;</td><td>&#10003;</td><td>&#10007;</td><td>&#10003;</td></tr>
+              <tr><td>Yogurt</td><td>&#10003;</td><td>&#10007;</td><td>&#10007;</td><td>&#10007;</td></tr>
+              <tr><td>Position</td><td>&#10003;</td><td>&#10003;</td><td>&#10007;</td><td>&#10007;</td></tr>
+              <tr><td>AirPods</td><td>&#10003;</td><td>&#10007;</td><td>&#10003;</td><td>&#10007;</td></tr>
+              <tr><td>Light Strip</td><td>&#10003;</td><td>&#10007;</td><td>&#10007;</td><td>&#10003;</td></tr>
+              <tr><td><b>Scenarios passed</b></td><td>6/6</td><td>3/6</td><td>2/6</td><td>3/6</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
     </div>
 
   </div>
+
+  <style>
+    .content figure.dipole-chart { margin: 0 0 0.75rem 0; text-align: left; }
+    .dipole-legend { display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; margin-bottom: 0.75rem; font-size: 0.8rem; color: #333333; }
+    .dipole-legend:empty { display: none; }
+    .dipole-legend-item { display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+    .dipole-swatch { display: inline-block; width: 11px; height: 11px; border-radius: 2px; flex: none; }
+    .dipole-panels { display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: flex-end; }
+    .dipole-panel { min-width: 0; }
+    .content .dipole-panel-title { font-size: 0.85rem; font-weight: 600; color: #52514e; margin-bottom: 0.4rem; }
+    .dipole-scroll { overflow-x: auto; }
+    .dipole-source { font-size: 0.75rem; color: #898781; margin-top: 0.6rem; text-align: left; }
+    .dipole-details { margin: 0.25rem 0 0 0; font-size: 0.85rem; }
+    .dipole-details summary { cursor: pointer; color: #52514e; }
+    .dipole-table-wrap { overflow-x: auto; margin-top: 0.5rem; }
+    .content .dipole-table-wrap table { font-size: 0.8rem; }
+    .dipole-table-wrap td, .dipole-table-wrap th { white-space: nowrap; }
+  </style>
+
+  <script>
+  (function () {
+    "use strict";
+
+    var COLORS = {
+      DIPOLE: "#2a78d6",
+      RGB: "#008300",
+      RGBD: "#e87ba4",
+      VIT: "#eda100",
+      MMAE: "#1baf7a",
+      DP3: "#eb6834",
+      PONDER: "#4a3aa7"
+    };
+
+    var SERIES7 = [
+      { name: "DIPOLE", color: COLORS.DIPOLE },
+      { name: "RGB-ResNet18", color: COLORS.RGB },
+      { name: "RGBD-ResNet18", color: COLORS.RGBD },
+      { name: "RGBD-ViT", color: COLORS.VIT },
+      { name: "RGBD-MultiMAE", color: COLORS.MMAE },
+      { name: "DP3", color: COLORS.DP3 },
+      { name: "PonderV2", color: COLORS.PONDER }
+    ];
+    var SERIES4 = [
+      { name: "DIPOLE", color: COLORS.DIPOLE },
+      { name: "DP (RGB)", color: COLORS.RGB },
+      { name: "DP (RGBD)", color: COLORS.RGBD },
+      { name: "DP3", color: COLORS.DP3 }
+    ];
+    var SERIES3 = [
+      { name: "ResNet (RGB only)", color: COLORS.RGB },
+      { name: "DP3 (PC only)", color: COLORS.DP3 },
+      { name: "DIPOLE", color: COLORS.DIPOLE }
+    ];
+    var METHOD_GROUPS7 = [
+      { name: "DIPOLE", lines: ["DIPOLE"] },
+      { name: "RGB-ResNet18", lines: ["RGB-", "ResNet18"] },
+      { name: "RGBD-ResNet18", lines: ["RGBD-", "ResNet18"] },
+      { name: "RGBD-ViT", lines: ["RGBD-", "ViT"] },
+      { name: "RGBD-MultiMAE", lines: ["RGBD-", "MultiMAE"] },
+      { name: "DP3", lines: ["DP3"] },
+      { name: "PonderV2", lines: ["PonderV2"] }
+    ];
+    var COLORS7 = [COLORS.DIPOLE, COLORS.RGB, COLORS.RGBD, COLORS.VIT, COLORS.MMAE, COLORS.DP3, COLORS.PONDER];
+
+    // Chart data (all numbers from the paper; see the data tables below each chart)
+    var V1A = [
+      [96, 35, 53, 48, 49, 58, 75],   // CloseBox
+      [3, 10, 6, 0, 1, 0, 0],         // StackCube
+      [79, 22, 24, 61, 48, 0, 0],     // AlphabetSoup
+      [88, 72, 62, 68, 69, 0, 0],     // Butter
+      [53, 17, 18, 31, 33, 7, 8],     // OrangeJuice
+      [72, 8, 11, 13, 14, 0, 0],      // Tomato
+      [65, 27, 29, 32, 33, 11, 14]    // Average
+    ];
+    var V1B = [["30"], ["52.8"], ["48.48"], ["45.49"], ["43.86"], ["126.19"], ["133.33"]];
+    var V2A = [
+      [68, 46, 43, 44, 48, 12, 19],   // L0
+      [64, 17, 23, 36, 32, 13, 15],   // L1
+      [64, 19, 21, 20, 20, 8, 8]      // L2
+    ];
+    var V2B = [["2.53"], ["32.72"], ["35.01"], ["45.28"], ["37.23"], ["5.06"], ["15.43"]];
+    var V3 = [
+      ["22.38", "18", "2.10", "1.40"], // Fetch Bottle
+      ["36", "25", "16", "0"]          // Insert Plug
+    ];
+    var V4 = [
+      ["0", "0", "67"],                // AlphabetSoup L1
+      ["0", "0", "73"],                // AlphabetSoup L2
+      ["1", "0", "68"],                // Tomato L1
+      ["1", "0", "81"],                // Tomato L2
+      ["0.5", "0", "72.3"]             // Mean
+    ];
+    var V5 = [[{ v: 6, d: "6/6" }], [{ v: 3, d: "3/6" }], [{ v: 2, d: "2/6" }], [{ v: 3, d: "3/6" }]];
+
+    function esc(t) {
+      return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    function renderLegend(id, series) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.innerHTML = series.map(function (s) {
+        return '<span class="dipole-legend-item"><span class="dipole-swatch" style="background:' + s.color + '"></span>' + esc(s.name) + "</span>";
+      }).join("");
+    }
+
+    function renderChart(id, cfg) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var W = cfg.width;
+      var mL = cfg.mL || 36, mR = 8, mT = cfg.mT || 26, plotH = cfg.plotH || 210;
+      var nG = cfg.groups.length, nS = cfg.series.length;
+      var labelFont = cfg.labelFont || 10;
+      var groupW = (W - mL - mR) / nG;
+      var groupLines = cfg.groups.map(function (g) { return g.lines || [g.label]; });
+      var maxLines = 1;
+      groupLines.forEach(function (l) { if (l.length > maxLines) maxLines = l.length; });
+      var mB = 12 + maxLines * (labelFont + 3);
+      var H = mT + plotH + mB;
+      var barW = cfg.barW || Math.max(4, Math.min(24, Math.floor((groupW * 0.72 - 2 * (nS - 1)) / nS)));
+      var innerW = nS * barW + 2 * (nS - 1);
+      var y0 = mT + plotH;
+      function y(v) { return y0 - (v / cfg.yMax) * plotH; }
+      var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + " " + H +
+        '" role="img" aria-label="' + esc(cfg.aria || "Bar chart") +
+        '" style="width:100%;height:auto;display:block;' + (cfg.minWidth ? "min-width:" + cfg.minWidth + "px;" : "") + '">';
+      // Emphasis band behind highlighted groups
+      cfg.groups.forEach(function (g, gi) {
+        if (g.band) {
+          svg += '<rect x="' + (mL + gi * groupW + 2).toFixed(1) + '" y="' + (mT - 8) +
+            '" width="' + (groupW - 4).toFixed(1) + '" height="' + (plotH + 8) + '" fill="#f4f3ee"/>';
+        }
+      });
+      // Gridlines + y tick labels
+      for (var t = 0; t <= cfg.yMax + 1e-9; t += cfg.yStep) {
+        var ty = y(t).toFixed(1);
+        if (t > 0) svg += '<line x1="' + mL + '" y1="' + ty + '" x2="' + (W - mR) + '" y2="' + ty + '" stroke="#e1e0d9" stroke-width="1"/>';
+        svg += '<text x="' + (mL - 6) + '" y="' + (y(t) + 3.5).toFixed(1) + '" text-anchor="end" font-size="10" fill="#898781">' + t + "</text>";
+      }
+      // Bars + selective direct labels
+      var placed = [];
+      var labelsOut = "";
+      cfg.groups.forEach(function (g, gi) {
+        var x0 = mL + gi * groupW + (groupW - innerW) / 2;
+        cfg.series.forEach(function (sr, si) {
+          var raw = cfg.values[gi][si], num, disp;
+          if (raw !== null && typeof raw === "object") { num = raw.v; disp = raw.d; }
+          else { num = parseFloat(raw); disp = String(raw); }
+          var x = x0 + si * (barW + 2);
+          var color = cfg.colorByGroup ? cfg.colorByGroup[gi] : sr.color;
+          var entity = cfg.colorByGroup ? (g.name || g.label) : sr.name;
+          var ctx = cfg.colorByGroup ? cfg.metric : (g.name || g.label);
+          var tip = entity + " — " + ctx + ": " + disp + (cfg.unit === undefined ? "%" : cfg.unit);
+          if (num > 0) {
+            var top = y(num), h = y0 - top, r = Math.min(4, barW / 2, h);
+            var d = "M" + x.toFixed(1) + " " + y0 +
+              "V" + (top + r).toFixed(1) +
+              "Q" + x.toFixed(1) + " " + top.toFixed(1) + " " + (x + r).toFixed(1) + " " + top.toFixed(1) +
+              "H" + (x + barW - r).toFixed(1) +
+              "Q" + (x + barW).toFixed(1) + " " + top.toFixed(1) + " " + (x + barW).toFixed(1) + " " + (top + r).toFixed(1) +
+              "V" + y0 + "Z";
+            svg += '<path d="' + d + '" fill="' + color + '"><title>' + esc(tip) + "</title></path>";
+          }
+          var lab = cfg.label ? cfg.label(gi, si) : null;
+          if (lab) {
+            var lt = typeof lab === "string" ? lab : lab.t;
+            var lc = (typeof lab === "object" && lab.c) || cfg.labelColor || "#0b0b0b";
+            var f = cfg.dlFont || 10;
+            var lx = x + barW / 2;
+            var ly = (num > 0 ? y(num) : y0) - 5;
+            var lw = lt.length * f * 0.62;
+            placed.forEach(function (p) {
+              if (Math.abs(p.x - lx) < (p.w + lw) / 2 + 2 && Math.abs(p.y - ly) < f + 2) ly = p.y - (f + 2);
+            });
+            placed.push({ x: lx, y: ly, w: lw });
+            labelsOut += '<text x="' + lx.toFixed(1) + '" y="' + ly.toFixed(1) +
+              '" text-anchor="middle" font-size="' + f + '" font-weight="600" fill="' + lc + '">' + esc(lt) + "</text>";
+          }
+        });
+      });
+      svg += labelsOut;
+      // Baseline
+      svg += '<line x1="' + mL + '" y1="' + y0 + '" x2="' + (W - mR) + '" y2="' + y0 + '" stroke="#c3c2b7" stroke-width="1"/>';
+      // Group labels
+      cfg.groups.forEach(function (g, gi) {
+        var cx = (mL + gi * groupW + groupW / 2).toFixed(1);
+        groupLines[gi].forEach(function (ln, li) {
+          svg += '<text x="' + cx + '" y="' + (y0 + 13 + li * (labelFont + 3)) +
+            '" text-anchor="middle" font-size="' + labelFont + '" fill="#52514e"' + (g.band ? ' font-weight="600"' : "") + ">" + esc(ln) + "</text>";
+        });
+      });
+      svg += "</svg>";
+      el.innerHTML = svg;
+    }
+
+    function renderAll() {
+      renderLegend("dipole-legend-1", SERIES7);
+      renderLegend("dipole-legend-2", SERIES7);
+      renderLegend("dipole-legend-3", SERIES4);
+      renderLegend("dipole-legend-4", SERIES3);
+
+      renderChart("dipole-chart-1a", {
+        width: 580, minWidth: 580, yMax: 100, yStep: 20, barW: 7, labelFont: 9.5,
+        series: SERIES7,
+        aria: "Success rate per task for DIPOLE and six baselines across six tasks and their average",
+        groups: [
+          { label: "CloseBox" }, { label: "StackCube" }, { label: "AlphabetSoup" },
+          { label: "Butter" }, { label: "OrangeJuice" }, { label: "Tomato" },
+          { label: "Average", band: true }
+        ],
+        values: V1A,
+        label: function (gi, si) { return (gi === 6 && si === 0) ? "65%" : null; }
+      });
+
+      renderChart("dipole-chart-1b", {
+        width: 340, minWidth: 320, yMax: 140, yStep: 20, barW: 22, labelFont: 8.5,
+        series: [{ name: "" }], colorByGroup: COLORS7, metric: "Cross-task CoV",
+        aria: "Cross-task coefficient of variation per method, lower is more stable",
+        groups: METHOD_GROUPS7,
+        values: V1B,
+        label: function (gi, si) { return gi === 0 ? "30%" : null; }
+      });
+
+      renderChart("dipole-chart-2a", {
+        width: 560, minWidth: 520, yMax: 100, yStep: 20, barW: 16,
+        series: SERIES7,
+        aria: "Success rate by domain randomization level for DIPOLE and six baselines",
+        groups: [
+          { name: "L0 · original", lines: ["L0 · original"] },
+          { name: "L1 · +material & table position", lines: ["L1 · +material &", "table position"] },
+          { name: "L2 · +camera viewpoint", lines: ["L2 · +camera viewpoint"] }
+        ],
+        values: V2A,
+        label: function (gi, si) { return si === 0 ? String(V2A[gi][0]) + "%" : null; }
+      });
+
+      renderChart("dipole-chart-2b", {
+        width: 340, minWidth: 320, yMax: 50, yStep: 10, barW: 22, labelFont: 8.5,
+        series: [{ name: "" }], colorByGroup: COLORS7, metric: "Cross-randomization dispersion",
+        aria: "Cross-randomization dispersion per method, lower is better",
+        groups: METHOD_GROUPS7,
+        values: V2B,
+        label: function (gi, si) { return gi === 0 ? "2.53%" : null; }
+      });
+
+      renderChart("dipole-chart-3", {
+        width: 460, minWidth: 420, yMax: 50, yStep: 10, barW: 24, dlFont: 9.5,
+        series: SERIES4,
+        aria: "Success rate on two real-world spatial-precision tasks for DIPOLE and three baselines",
+        groups: [
+          { name: "Fetch Bottle (randomized placement)", lines: ["Fetch Bottle", "(randomized placement)"] },
+          { name: "Insert Plug (sub-cm insertion)", lines: ["Insert Plug", "(sub-cm insertion)"] }
+        ],
+        values: V3,
+        label: function (gi, si) { return V3[gi][si] + "%"; }
+      });
+
+      renderChart("dipole-chart-4", {
+        width: 520, minWidth: 500, yMax: 100, yStep: 20, barW: 22,
+        series: SERIES3,
+        aria: "Success rate on tasks where each unimodal encoder fails, for RGB-only, point-cloud-only, and DIPOLE",
+        groups: [
+          { label: "AlphabetSoup L1" }, { label: "AlphabetSoup L2" },
+          { label: "Tomato L1" }, { label: "Tomato L2" },
+          { label: "Mean", band: true }
+        ],
+        values: V4,
+        label: function (gi, si) {
+          if (si < 2) return { t: V4[gi][si] + "%", c: "#52514e" };
+          if (si === 2 && gi === 4) return "72.3%";
+          return null;
+        }
+      });
+
+      renderChart("dipole-chart-5", {
+        width: 360, minWidth: 320, yMax: 6, yStep: 1, barW: 24,
+        series: [{ name: "" }],
+        colorByGroup: [COLORS.DIPOLE, COLORS.RGB, COLORS.RGBD, COLORS.DP3],
+        metric: "Scenarios passed", unit: "",
+        aria: "Number of zero-shot transfer scenarios passed out of six per method",
+        groups: [
+          { label: "DIPOLE" }, { label: "DP (RGB)" }, { label: "DP (RGBD)" }, { label: "DP3" }
+        ],
+        values: V5,
+        label: function (gi, si) { return V5[gi][0].d; }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", renderAll);
+    } else {
+      renderAll();
+    }
+  })();
+  </script>
 </section>
 <!-- ================== End Key Attributes ================== -->
 
@@ -387,8 +834,7 @@
     <h2 class="title is-3 has-text-centered">Methodology</h2>
     <div class="content" style="text-align: justify;">
       <p>
-      By jointly encoding RGB images and point clouds into a shared latent space with modality-aware fusion, VGDP constructs a holistic 3D visual representation of the environment.
-      Dropout-guided fusion proves critical for improving both accuracy and robustness.
+      DIPOLE (DIffusion POlicy with compLementarity Encoders) predicts actions from RGB and geometric observations through a pair of complementary encoders &mdash; a ResNet-18 for RGB images and a DP3-style encoder for point clouds, alongside a small MLP for proprioception. Rather than relying on a specialized fusion architecture, DIPOLE enforces complementarity through a training-time mechanism: at each training step, modality-wise dropout masks either the RGB or the point-cloud feature, forcing each modality to remain individually informative instead of collapsing onto the locally easier one. A lightweight cross-attention layer then exchanges complementary cues between the two streams, and the fused representation conditions a diffusion action head.
       </p>
     </div>
   </div>
