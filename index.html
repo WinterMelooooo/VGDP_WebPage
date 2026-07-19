@@ -74,7 +74,7 @@
 
 
   <!-- TODO: Replace with your paper title and authors -->
-  <title>Visual Geometrey Diffusion Policy</title>
+  <title>DIPOLE: Fusing Vision and Geometry for Robust Visuomotor Generalization</title>
   
   <!-- Favicon and App Icons -->
   
@@ -191,19 +191,24 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title"><strong style="font-size: 1.4em;"><span style="color: #6A86E5;">V</span><span style="color: #BD5745;">G</span><span style="color: #E1BE58;">D</span><span style="color: #6FA263;">P</span></strong><br>Visual-Geometry Diffusion Policy</h1>
+            <h1 class="title is-1 publication-title"><strong style="font-size: 1.4em;"><span style="color: #6A86E5;">D</span><span style="color: #BD5745;">I</span><span style="color: #E1BE58;">P</span><span style="color: #6FA263;">O</span><span style="color: #6A86E5;">L</span><span style="color: #BD5745;">E</span></strong><br>Fusing Vision and Geometry for Robust Visuomotor Generalization</h1>
             <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="https://github.com/WinterMelooooo" target="_blank">Yikai Tang</a><sup>*1</sup>,</span>
+                <a href="https://github.com/WinterMelooooo" target="_blank">Yikai Tang</a><sup>1*</sup>,</span>
               <span class="author-block">
-                <a href="https://geng-haoran.github.io/" target="_blank">Haoran Geng</a><sup>*†1</sup>,</span>
+                <a href="https://geng-haoran.github.io/" target="_blank">Haoran Geng</a><sup>1*†</sup>,</span>
+              <span class="author-block">
+                Jindou Jia<sup>2</sup>,</span>
+              <span class="author-block">
+                Yuxuan Hu<sup>2</sup>,</span>
               <span class="author-block">
                 <a href="https://github.com/szang18" target="_blank">Sheng Zang</a><sup>2</sup>,</span>
               <span class="author-block">
-                <a href="https://people.eecs.berkeley.edu/~pabbeel/" target="_blank">Pieter Abbeel</a><sup>†1</sup>,</span>
+                <a href="https://marsyang.site/" target="_blank">Jianfei Yang</a><sup>2†</sup>,</span>
               <span class="author-block">
-                <a href="https://people.eecs.berkeley.edu/~malik/" target="_blank">Jitendra Malik</a><sup>†1</sup></span>
+                <a href="https://people.eecs.berkeley.edu/~pabbeel/" target="_blank">Pieter Abbeel</a><sup>1†</sup>,</span>
+              <span class="author-block">
+                <a href="https://people.eecs.berkeley.edu/~malik/" target="_blank">Jitendra Malik</a><sup>1†</sup></span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
@@ -311,24 +316,27 @@
         <div class="content has-text-justified">
           <!-- TODO: Replace with your paper abstract -->
           <p>
-            Imitation learning has emerged as a crucial approach
-            for acquiring visuomotor skills from demonstrations,
-            where designing effective observation encoders is essential for
-            policy generalization. However, existing methods often struggle
-            to generalize under spatial and visual randomizations, instead
-            tending to overfit. To address this challenge, we propose <b>Visual-
-            Geometry Diffusion Policy (VGDP)</b>, a multimodal imitation
-            learning framework that fuses RGB images and point clouds
-            through a cross-attention mechanism, fully leveraging 3D representations
-            while incorporating the long-overlooked benefits of
-            2D visual features. Across a benchmark of 18 simulated tasks
-            and 3 real-world tasks using 7 different observation encoders,
-            VGDP prevails other policies with an average performance
-            improvement of <b>39.1%</b>. More importantly, VGDP demonstrates
-            strong robustness under visual and spatial perturbations,
-            surpassing baselines with an average improvement of <b>41.5%</b>
-            in different visual conditions and <b>15.2%</b> in different spatial
-            settings.
+            Imitation learning has emerged as a crucial approach for acquiring
+            visuomotor skills from demonstrations, where designing effective
+            observation encoders is essential for policy generalization.
+            However, existing methods tend to struggle once test-time conditions
+            differ from the demonstrations, such as changes in lighting, texture,
+            viewpoint, object placement, or object identity. To address this
+            challenge, we propose <b>DIffusion POlicy with compLementarity
+            Encoders (DIPOLE)</b>, a visuomotor policy that learns to fuse
+            complementary modalities through a training-time mechanism rather
+            than a specialized fusion architecture. A modality-wise dropout
+            masks one branch at each training step, encouraging each modality
+            to remain individually informative. A lightweight cross-attention
+            layer then exchanges complementary cues between the two. This design
+            endows DIPOLE with five core strengths: stable high performance
+            across diverse tasks, robustness to visual changes, spatial
+            generalization at sub-centimeter precision, emergent capability
+            beyond either modality, and zero-shot transfer to unseen objects.
+            Across 18 simulated and 4 real-world tasks, DIPOLE outperforms six
+            baselines by <b>39.1%</b> on average, with gains of <b>41.5%</b>
+            under unseen visual distractors and <b>15.2%</b> under randomized
+            object placement.
           </p>
         </div>
       </div>
@@ -864,7 +872,7 @@
           <video class="bench-video" autoplay muted controls loop preload="metadata">
             <source src="static/videos/InsertPlug_VGDP.mp4" type="video/mp4">
           </video>
-          <p class="caption">VGDP</p>
+          <p class="caption">DIPOLE</p>
         </div>
         
         <!-- 下方三个小视频 -->
@@ -968,13 +976,13 @@
         <video class="bench-video" autoplay muted controls loop preload="metadata">
           <source src="static/videos/VGDP_Butter_speed_20_hdrfix_h264.mp4" type="video/mp4">
         </video>
-        <p class="caption">VGDP</p>
+        <p class="caption">DIPOLE</p>
       </div>
       
 
     </div>
     <div class="text-content-align-820">
-      Aside of the findings in VGDP's effectiveness, we also discovered the surprisingly aligning results with the same task in simulation. We find that strongly domain-randomized simulation benchmarks can well reflect the performance in real-world settings.
+      Aside of the findings in DIPOLE's effectiveness, we also discovered the surprisingly aligning results with the same task in simulation. We find that strongly domain-randomized simulation benchmarks can well reflect the performance in real-world settings.
     </div>
     <div class="media-grid">
       <figure class="media-item">
@@ -1055,14 +1063,14 @@
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@article@misc{tang2025visualgeometrydiffusionpolicyrobust,
-        title={Visual-Geometry Diffusion Policy: Robust Generalization via Complementarity-Aware Multimodal Fusion}, 
-        author={Yikai Tang and Haoran Geng and Sheng Zang and Pieter Abbeel and Jitendra Malik},
+      <pre id="bibtex-code"><code>@misc{tang2025dipole,
+        title={DIPOLE: Fusing Vision and Geometry for Robust Visuomotor Generalization},
+        author={Yikai Tang and Haoran Geng and Jindou Jia and Yuxuan Hu and Sheng Zang and Jianfei Yang and Pieter Abbeel and Jitendra Malik},
         year={2025},
         eprint={2511.22445},
         archivePrefix={arXiv},
         primaryClass={cs.RO},
-        url={https://arxiv.org/abs/2511.22445}, 
+        url={https://arxiv.org/abs/2511.22445},
   }</code></pre>
     </div>
 </section>
